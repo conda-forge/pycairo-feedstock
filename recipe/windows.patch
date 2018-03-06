@@ -1,6 +1,6 @@
 --- a/setup.py
 +++ b/setup.py
-@@ -127,7 +127,6 @@
+@@ -154,7 +154,6 @@
  Name: Pycairo
  Description: Python %(py_version)d bindings for cairo
  Version: %(version)s
@@ -8,34 +8,3 @@
  Cflags: -I${prefix}/include/pycairo
  Libs:
  """ % {
-@@ -169,7 +168,6 @@
-         )
- 
-     def run(self):
--        pkg_config_version_check('cairo', CAIRO_VERSION_REQUIRED)
- 
-         if self.enable_xpyb:
-             if sys.version_info[0] != 2:
-@@ -220,6 +218,8 @@
- 
- 
- def main():
-+    import os
-+    pfx = os.environ['LIBRARY_PREFIX']
- 
-     extra_compile_args = []
-     if sys.version_info[0] == 2:
-@@ -242,10 +242,9 @@
-             'cairo/surface.c',
-             'cairo/enums.c',
-         ],
--        include_dirs=pkg_config_parse('--cflags-only-I', 'cairo'),
--        library_dirs=pkg_config_parse('--libs-only-L', 'cairo'),
--        libraries=pkg_config_parse('--libs-only-l', 'cairo'),
--        extra_compile_args=extra_compile_args,
-+        include_dirs=['%s\include\cairo' % pfx],
-+        library_dirs=['%s\lib' % pfx],
-+        extra_link_args=['cairo.lib'],
-     )
- 
-     with io.open('README.rst', encoding="utf-8") as h:
