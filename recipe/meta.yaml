@@ -16,30 +16,21 @@ source:
 build:
   number: 0
   detect_binary_files_with_prefix: true
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
 
 requirements:
   build:
-    - m2w64-pkg-config  # [win]
-    - m2w64-toolchain  # [win]
     - pkg-config  # [not win]
     - posix  # [win]
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
-    - cairo 1.14.*
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
+    - m2w64-pkg-config  # [win]
+    - cairo
     - python
-    - toolchain
     - xorg-libx11 1.6.*
     - xorg-xproto
   run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
-    - cairo 1.14.*
+    - cairo
     - python
 
 test:
