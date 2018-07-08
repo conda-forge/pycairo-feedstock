@@ -1,6 +1,6 @@
 {% set name = "pycairo" %}
-{% set version = "1.16.3" %}
-{% set sha256 = "5bb321e5d4f8b3a51f56fc6a35c143f1b72ce0d748b43d8b623596e8215f01f7" %}
+{% set version = "1.17.1" %}
+{% set sha256 = "0f0a35ec923d87bc495f6753b1e540fd046d95db56a35250c44089fbce03b698" %}
 
 package:
   name: {{ name }}
@@ -26,6 +26,7 @@ requirements:
   host:
     - m2w64-pkg-config  # [win]
     - cairo
+    - pthread-stubs
     - python
     - xorg-libx11 1.6.*
     - xorg-xproto
