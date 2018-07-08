@@ -26,6 +26,7 @@ requirements:
   host:
     - m2w64-pkg-config  # [win]
     - cairo
+    - pthread-stubs
     - python
     - xorg-libx11 1.6.*
     - xorg-xproto
