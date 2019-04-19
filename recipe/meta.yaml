@@ -1,6 +1,6 @@
 {% set name = "pycairo" %}
-{% set version = "1.18.0" %}
-{% set sha256 = "abd42a4c9c2069febb4c38fe74bfc4b4a9d3a89fea3bc2e4ba7baff7a20f783f" %}
+{% set version = "1.18.1" %}
+{% set sha256 = "70172e58b6bad7572a3518c26729b074acdde15e6fee6cbab6d3528ad552b786" %}
 
 package:
   name: {{ name }}
@@ -14,7 +14,7 @@ source:
     - windows.patch  # [win]
 
 build:
-  number: 1000
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
