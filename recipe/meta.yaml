@@ -7,7 +7,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
@@ -21,11 +20,11 @@ requirements:
   build:
     - pkg-config  # [not win]
     - posix  # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}
   host:
     - m2w64-pkg-config  # [win]
     - cairo
+    - cython
     - pthread-stubs
     - python
     - xorg-libx11 1.6.*
