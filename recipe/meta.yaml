@@ -25,6 +25,7 @@ requirements:
     - m2w64-pkg-config  # [win]
     - cairo
     - cython
+    - pip
     - pthread-stubs
     - python
     - xorg-libx11 1.6.*
