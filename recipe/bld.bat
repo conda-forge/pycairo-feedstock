@@ -29,9 +29,6 @@ if errorlevel 1 exit 1
 ninja -v -C builddir
 if errorlevel 1 exit 1
 
-ninja -C builddir test
-if errorlevel 1 exit 1
-
 ninja -C builddir install
 if errorlevel 1 exit 1
 
