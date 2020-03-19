@@ -11,21 +11,22 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
   skip: true  # [py < 35]
 
 requirements:
   build:
-    - meson  # [win]
+    - meson
     - pkg-config
     - posix  # [win]
     - {{ compiler('c') }}
   host:
     - cairo
     - cython
-    - pip
+    - flake8  # for testing during the build
     - pthread-stubs
+    - pytest  # for testing during the build
     - python
     - xorg-libx11 1.6.*
     - xorg-xproto
@@ -38,6 +39,7 @@ test:
     - cairo
   commands:
     # verify the pkgconfig files get installed
+    - test -f $PREFIX/lib/pkgconfig/py3cairo.pc  # [unix]
     - if not exist %LIBRARY_LIB%\\pkgconfig\\py3cairo.pc exit 1  # [win]
 
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
