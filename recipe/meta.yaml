@@ -9,21 +9,19 @@ package:
 source:
   url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - windows.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   skip: true  # [py < 35]
 
 requirements:
   build:
-    - pkg-config  # [not win]
+    - meson  # [win]
+    - pkg-config
     - posix  # [win]
     - {{ compiler('c') }}
   host:
-    - m2w64-pkg-config  # [win]
     - cairo
     - cython
     - pip
@@ -39,6 +37,9 @@ test:
   imports:
     - cairo
   commands:
+    # verify the pkgconfig files get installed
+    - if not exist %LIBRARY_LIB%\\pkgconfig\\py3cairo.pc exit 1  # [win]
+
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
