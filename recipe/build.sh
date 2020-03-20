@@ -30,3 +30,12 @@ meson setup builddir "${meson_config_args[@]}"
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir test
 ninja -C builddir install
+
+# meson installs to the wrong location for PyPy, so move the files manually
+PYTHON_IMPL=$($PYTHON -c "import platform; print(platform.python_implementation())")
+if [ "$PYTHON_IMPL" = "PyPy" ]; then
+    INSTALL_PLATLIB=$($PYTHON -c "import sysconfig; print(sysconfig.get_path('platlib'))")
+    cd $PREFIX/lib/pypy*/site-packages
+    mv *.egg-info $INSTALL_PLATLIB
+    mv cairo $INSTALL_PLATLIB
+fi
