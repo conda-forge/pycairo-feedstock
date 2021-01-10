@@ -42,8 +42,6 @@ test:
     - test -f $PREFIX/lib/pkgconfig/py3cairo.pc  # [unix]
     - if not exist %LIBRARY_LIB%\\pkgconfig\\py3cairo.pc exit 1  # [win]
 
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://cairographics.org/pycairo/
