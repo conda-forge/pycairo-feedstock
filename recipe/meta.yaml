@@ -33,6 +33,7 @@ requirements:
     - python
     - xorg-libx11 1.6.*
     - xorg-xproto
+    - glib
   run:
     - cairo
     - python
