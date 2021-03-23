@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
   skip: true  # [py < 35]
 
@@ -25,10 +25,13 @@ requirements:
     - cairo
     - cython
     - flake8  # for testing during the build
+    - glib
     - pthread-stubs
     - pytest  # for testing during the build
     - python
-    - xorg-libx11 1.6.*
+    - xorg-libx11 >=1.6,<2
+    # Additional constraintless xorg-libx11 dep below is for conda-build to add potential pinning to.
+    - xorg-libx11
     - xorg-xproto
   run:
     - cairo
