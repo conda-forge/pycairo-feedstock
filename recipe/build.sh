@@ -1,6 +1,8 @@
 #! /bin/bash
 
-set -e
+set -xe
+
+PYTHON_IMPL=$($PYTHON -c 'import platform; print(platform.python_implementation())')
 
 if [ $(uname) = Darwin ] ; then
     # This needs to be kept the same as what was used to build Cairo, which is
@@ -24,6 +26,14 @@ meson_config_args=(
   -D python="$PYTHON"
 )
 
+# Lame workaround to allow Meson to detect PyPy as a linkable dependency, since it
+# looks like its current plumbing may have some issues in our configuration. Cf
+# https://github.com/conda-forge/pycairo-feedstock/pull/23,
+# https://github.com/mesonbuild/meson/issues/8570
+if [ "$PYTHON_IMPL" = "PyPy" ]; then
+  cp $PREFIX/lib/libpypy* $PREFIX/bin/
+fi
+
 # configure build using meson
 meson setup builddir "${meson_config_args[@]}"
 
@@ -38,4 +48,7 @@ if [ "$PYTHON_IMPL" = "PyPy" ]; then
     cd $PREFIX/lib/pypy*/site-packages
     mv *.egg-info $INSTALL_PLATLIB
     mv cairo $INSTALL_PLATLIB
+
+    # Undo the workaround above so as not to pollute our package
+    rm -f $PREFIX/bin/libpypy*
 fi
