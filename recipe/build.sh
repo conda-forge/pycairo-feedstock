@@ -14,18 +14,21 @@ fi
 # Without them, `pycairo` will not be found and might be built as an in-tree subproject
 # which is obviously undesirable.
 
+# get meson to find pkg-config when cross compiling
+export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
+
 # meson options
 meson_config_args=(
   --prefix="$PREFIX"
-  --libdir=lib
   --wrap-mode=nofallback
   --buildtype=release
   --backend=ninja
+  -Dlibdir=lib
   -D python="$PYTHON"
 )
 
 # configure build using meson
-meson setup builddir "${meson_config_args[@]}"
+meson setup builddir ${MESON_ARGS} "${meson_config_args[@]}"
 
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir test
