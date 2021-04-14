@@ -28,7 +28,9 @@ requirements:
     - {{ compiler('c') }}
   host:
     - cairo
+    - flake8  # for testing during the build
     - glib
+    - pytest  # for testing during the build
     - python
   run:
     - python
