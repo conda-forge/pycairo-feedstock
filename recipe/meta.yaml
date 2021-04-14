@@ -19,23 +19,13 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
     - meson
     - pkg-config
-    - posix  # [win]
     - {{ compiler('c') }}
   host:
     - cairo
-    - cython
-    - flake8  # for testing during the build
-    - pthread-stubs
-    - pytest  # for testing during the build
     - python
-    - xorg-libx11 1.6.*
-    - xorg-xproto
-    - glib
   run:
-    - cairo
     - python
 
 test:
