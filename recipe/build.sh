@@ -27,6 +27,12 @@ meson_config_args=(
   -D python="$PYTHON"
 )
 
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+    meson_config_args+=(
+        -D tests=false
+    )
+fi
+
 # configure build using meson
 meson setup builddir ${MESON_ARGS} "${meson_config_args[@]}"
 
