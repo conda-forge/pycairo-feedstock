@@ -1,0 +1,13 @@
+diff --git a/tests/test_typing.py b/tests/test_typing.py
+index 0d16f0b..53d7877 100644
+--- a/tests/test_typing.py
++++ b/tests/test_typing.py
+@@ -16,7 +16,7 @@ def test_typing():
+         names = set()
+         for key, value in vars(t).items():
+             if key in ["XlibSurface", "XCBSurface", "Win32PrintingSurface",
+-                       "Win32Surface"]:
++                       "Win32Surface", "TeeSurface"]:
+                 continue
+             if key.startswith("_"):
+                 continue
