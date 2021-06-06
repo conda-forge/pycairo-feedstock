@@ -9,6 +9,8 @@ package:
 source:
   url: https://github.com/pygobject/pycairo/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - typing-test-workaround.patch
 
 build:
   number: 0
