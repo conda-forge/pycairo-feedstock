@@ -13,7 +13,7 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   skip: true  # [py < 35]
   ignore_run_exports:
