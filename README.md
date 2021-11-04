@@ -78,13 +78,6 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_python3.7.____73_pypypython_implpypy</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=846&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pycairo-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_python3.7.____73_pypypython_implpypy" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>linux_aarch64_python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=846&branchName=master">
