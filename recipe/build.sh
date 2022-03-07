@@ -36,9 +36,9 @@ fi
 # configure build using meson
 meson setup builddir ${MESON_ARGS} "${meson_config_args[@]}"
 
-ninja -v -C builddir -j ${CPU_COUNT}
-ninja -C builddir test
-ninja -C builddir install
+meson compile -v -C builddir -j ${CPU_COUNT}
+meson test -C builddir --print-errorlogs --timeout-multiplier 10 --num-processes ${CPU_COUNT}
+meson install -C builddir
 
 # meson installs to the wrong location for PyPy, so move the files manually
 if [[ $python_impl == "pypy" ]] ; then
