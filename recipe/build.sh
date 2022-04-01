@@ -39,11 +39,3 @@ meson setup builddir ${MESON_ARGS} "${meson_config_args[@]}"
 meson compile -v -C builddir -j ${CPU_COUNT}
 meson test -C builddir --print-errorlogs --timeout-multiplier 10 --num-processes ${CPU_COUNT}
 meson install -C builddir
-
-# meson installs to the wrong location for PyPy, so move the files manually
-if [[ $python_impl == "pypy" ]] ; then
-    INSTALL_PLATLIB=$($PYTHON -c "import sysconfig; print(sysconfig.get_path('platlib'))")
-    cd $PREFIX/lib/pypy*/site-packages
-    mv *.egg-info $INSTALL_PLATLIB
-    mv cairo $INSTALL_PLATLIB
-fi
