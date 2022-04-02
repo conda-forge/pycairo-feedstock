@@ -16,33 +16,19 @@ set ^"MESON_OPTIONS=^
   --buildtype=release ^
   --backend=ninja ^
   -D python=%PYTHON% ^
+  -D python.install_env=auto ^
  ^"
 
 :: configure build using meson
-:: when/if the meson invocation fails for newer meson, just change to use
-:: "meson" command that is provided as an entry-point
-%BUILD_PREFIX%\python.exe %BUILD_PREFIX%\Scripts\meson setup builddir !MESON_OPTIONS!
+meson setup builddir !MESON_OPTIONS!
 if errorlevel 1 exit 1
 
 :: print results of build configuration
-:: when/if the meson invocation fails for newer meson, just change to use
-:: "meson" command that is provided as an entry-point
-%BUILD_PREFIX%\python.exe %BUILD_PREFIX%\Scripts\meson configure builddir
+meson configure builddir
 if errorlevel 1 exit 1
 
 ninja -v -C builddir
 if errorlevel 1 exit 1
 
 ninja -C builddir install
-if errorlevel 1 exit 1
-
-:: meson doesn't put the Python files in the right place, and there's no way to override
-:: (py* catches both python* and pypy*)
-cd %LIBRARY_PREFIX%\lib\py*
-if errorlevel 1 exit 1
-cd site-packages
-if errorlevel 1 exit 1
-move *.egg-info %PREFIX%\Lib\site-packages
-if errorlevel 1 exit 1
-move cairo %PREFIX%\Lib\site-packages\cairo
 if errorlevel 1 exit 1

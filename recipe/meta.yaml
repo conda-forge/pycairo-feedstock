@@ -13,9 +13,8 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
-  skip: true  # [py < 38 and python_impl == 'pypy' and aarch64]
   ignore_run_exports:
     - libglib
 
@@ -23,9 +22,7 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    # use last working meson to get PyPy build to work
-    # see https://github.com/mesonbuild/meson/issues/8570
-    - meson 0.55.*
+    - meson >=0.62
     - pkg-config
     - {{ compiler('c') }}
   host:
