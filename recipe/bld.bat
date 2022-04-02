@@ -20,15 +20,11 @@ set ^"MESON_OPTIONS=^
  ^"
 
 :: configure build using meson
-:: when entry_point scripts actually work with PyPy, just change to use
-:: "meson" command that is provided as an entry-point
-%BUILD_PREFIX%\python.exe -m mesonbuild.mesonmain setup builddir !MESON_OPTIONS!
+meson setup builddir !MESON_OPTIONS!
 if errorlevel 1 exit 1
 
 :: print results of build configuration
-:: when entry_point scripts actually work with PyPy, just change to use
-:: "meson" command that is provided as an entry-point
-%BUILD_PREFIX%\python.exe -m mesonbuild.mesonmain configure builddir
+meson configure builddir
 if errorlevel 1 exit 1
 
 ninja -v -C builddir
