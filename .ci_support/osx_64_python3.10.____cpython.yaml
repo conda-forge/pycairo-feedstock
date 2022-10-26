@@ -3,9 +3,9 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '14'
 cairo:
-- '1.16'
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,8 +15,6 @@ glib:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x

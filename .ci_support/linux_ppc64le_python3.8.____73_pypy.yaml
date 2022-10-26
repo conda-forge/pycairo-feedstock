@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 cairo:
-- '1.16'
+- '1'
 cdt_name:
 - cos7
 channel_sources:
@@ -15,8 +15,6 @@ docker_image:
 glib:
 - '2'
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
