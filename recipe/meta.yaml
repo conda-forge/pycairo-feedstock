@@ -1,6 +1,6 @@
 {% set name = "pycairo" %}
-{% set version = "1.21.0" %}
-{% set sha256 = "251907f18a552df938aa3386657ff4b5a4937dde70e11aa042bc297957f4b74b" %}
+{% set version = "1.22.0" %}
+{% set sha256 = "b34517abdf619d4c7f0274f012b398d9b03bab7adc3efd2912bf36be3f911f3f" %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,7 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: true
   ignore_run_exports:
     - libglib
