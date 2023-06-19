@@ -1,11 +1,11 @@
-About pycairo
-=============
+About pycairo-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pycairo-feedstock/blob/main/LICENSE.txt)
 
 Home: http://cairographics.org/pycairo/
 
 Package license: LGPL-2.1-only OR MPL-1.1
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pycairo-feedstock/blob/main/LICENSE.txt)
 
 Summary: Python bindings for the Cairo graphics library.
 
