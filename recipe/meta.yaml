@@ -31,6 +31,7 @@ requirements:
     - glib
     - pytest  # for testing during the build
     - python
+    - setuptools
   run:
     - python
 
