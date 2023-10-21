@@ -3,7 +3,7 @@ c_compiler:
 cairo:
 - '1'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 glib:
@@ -16,6 +16,3 @@ python:
 - 3.12.* *_cpython
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - channel_sources
