@@ -21,7 +21,6 @@ export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
 meson_config_args=(
   --prefix="$PREFIX"
   --wrap-mode=nofallback
-  --buildtype=release
   --backend=ninja
   -Dlibdir=lib
   -D python="$PYTHON"
