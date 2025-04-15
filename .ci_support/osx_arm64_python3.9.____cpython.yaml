@@ -16,6 +16,8 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+expat:
+- '2'
 glib:
 - '2'
 macos_machine:
@@ -28,3 +30,5 @@ python:
 - 3.9.* *_cpython
 target_platform:
 - osx-arm64
+zlib:
+- '1'
