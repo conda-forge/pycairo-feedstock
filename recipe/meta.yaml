@@ -1,6 +1,6 @@
 {% set name = "pycairo" %}
-{% set version = "1.27.0" %}
-{% set sha256 = "5cb21e7a00a2afcafea7f14390235be33497a2cce53a98a19389492a60628430" %}
+{% set version = "1.28.0" %}
+{% set sha256 = "26ec5c6126781eb167089a123919f87baa2740da2cca9098be8b3a6b91cc5fbc" %}
 
 package:
   name: {{ name }}
@@ -24,15 +24,18 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - meson >=0.62
     - pkg-config
-    - {{ compiler('c') }}
+    - {{ compiler("c") }}
     - {{ stdlib("c") }}
   host:
     - cairo
+    - expat  # for pkg-config files
     - flake8  # for testing during the build
     - glib
     - pytest  # for testing during the build
     - python
     - setuptools
+    - xorg-xorgproto  # for pkg-config files
+    - zlib  # for pkg-config files
   run:
     - python
 
