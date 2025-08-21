@@ -13,7 +13,7 @@ c_stdlib_version:
 cairo:
 - '1'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 expat:
