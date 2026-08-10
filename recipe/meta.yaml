@@ -1,6 +1,6 @@
 {% set name = "pycairo" %}
-{% set version = "1.29.0" %}
-{% set sha256 = "f3f7fde97325cae80224c09f12564ef58d0d0f655da0e3b040f5807bd5bd3142" %}
+{% set version = "1.29.1" %}
+{% set sha256 = "4fbd26b4af24c9787d84cf5448e34eb8dca064b732479aaecd03109520eebd5f" %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,7 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
   ignore_run_exports:
     - libglib
@@ -30,6 +30,7 @@ requirements:
     - cairo
     - expat  # for pkg-config files
     - flake8  # for testing during the build
+    - freetype  # for pkg-config files
     - glib
     - pytest  # for testing during the build
     - python
