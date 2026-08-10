@@ -30,6 +30,7 @@ requirements:
     - cairo
     - expat  # for pkg-config files
     - flake8  # for testing during the build
+    - freetype  # for pkg-config files
     - glib
     - pytest  # for testing during the build
     - python
