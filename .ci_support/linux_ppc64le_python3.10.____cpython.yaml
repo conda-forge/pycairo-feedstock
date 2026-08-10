@@ -16,6 +16,8 @@ docker_image:
 - quay.io/condaforge/linux-anvil-ppc64le:alma10
 expat:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
 pin_run_as_build:

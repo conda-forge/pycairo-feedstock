@@ -18,6 +18,8 @@ channel_targets:
 - conda-forge main
 expat:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
 macos_machine:
