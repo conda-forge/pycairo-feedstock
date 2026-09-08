@@ -1,19 +1,13 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '15'
+- vs2022
 c_stdlib:
-- sysroot
-c_stdlib_version:
-- '2.39'
+- vs
 cairo:
 - '1'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
-docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma10
 expat:
 - '2'
 freetype:
@@ -25,9 +19,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.14.* *_cp314t
+- 3.15.* *_cp315
 target_platform:
-- linux-riscv64
+- win-64
 zip_keys:
 - - python
   - channel_sources
