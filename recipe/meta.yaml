@@ -11,6 +11,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - typing-test-workaround.patch
+    - negative-ps-level.patch  # [win]
 
 build:
   number: 3

@@ -1,0 +1,19 @@
+From: Clay Warren
+Subject: [PATCH] Reject negative PostScript levels before calling Cairo
+
+Cairo 1.18.4 checks only the upper bound before indexing its level-string
+array. With signed MSVC enums, negative levels can reach that array.
+Validate the Python integer first so the existing ValueError contract
+and upstream test also hold on Windows.
+
+--- a/cairo/surface.c
++++ b/cairo/surface.c
+@@ -1725,7 +1725,7 @@
+ 
+   level = (cairo_ps_level_t)level_arg;
+ 
+-  s = cairo_ps_level_to_string (level);
++  s = level_arg < 0 ? NULL : cairo_ps_level_to_string (level);
+   if (s == NULL){
+     PyErr_SetString(PyExc_ValueError, "level_to_string: "
+ 		    "invalid level argument");
