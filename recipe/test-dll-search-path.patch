@@ -1,0 +1,26 @@
+From: Clay Warren
+Subject: [PATCH] Use conda host DLLs in Windows tests
+
+Registering every runner PATH directory makes AddDllDirectory search order
+undefined and can load unrelated runtime DLLs. Restrict the conda build
+tests to their declared host dependencies; keep every test enabled.
+
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -2,13 +2,11 @@
+ 
+ 
+ def set_dll_search_path() -> None:
+-    # Python 3.8 no longer searches for DLLs in PATH, so we have to add
+-    # everything in PATH manually. Note that unlike PATH add_dll_directory
+-    # has no defined order, so if there are two cairo DLLs in PATH we
+-    # might get a random one.
++    # Python 3.8 no longer searches PATH for DLLs. Register only the conda
++    # host dependencies, avoiding unrelated runner DLLs and undefined order.
+     if os.name != "nt" or not hasattr(os, "add_dll_directory"):
+         return
+-    for p in os.environ.get("PATH", "").split(os.pathsep):
++    for p in [os.path.join(os.environ["PREFIX"], "Library", "bin")]:
+         try:
+             os.add_dll_directory(p)
+         except OSError:
