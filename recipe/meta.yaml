@@ -12,6 +12,7 @@ source:
   patches:
     - typing-test-workaround.patch
     - negative-ps-level.patch  # [win]
+    - test-dll-search-path.patch  # [win]
 
 build:
   number: 3
