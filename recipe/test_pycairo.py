@@ -22,6 +22,14 @@ for path in (Path(sys.executable), Path(_cairo.__file__)):
     assert machine == expected, (path, hex(machine), hex(expected))
     print(f"{path}: PE machine {machine:04X}")
 
+for invalid in (-1, -2147483648, 2147483647):
+    try:
+        cairo.PSSurface.level_to_string(invalid)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError(f"Accepted invalid PostScript level {invalid}")
+
 surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 16, 16)
 context = cairo.Context(surface)
 context.set_source_rgb(1, 0, 0)
