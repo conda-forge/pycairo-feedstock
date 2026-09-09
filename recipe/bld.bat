@@ -30,5 +30,8 @@ if errorlevel 1 exit 1
 ninja -v -C builddir
 if errorlevel 1 exit 1
 
+meson test -C builddir --print-errorlogs --verbose --timeout-multiplier 10
+if errorlevel 1 exit 1
+
 ninja -C builddir install
 if errorlevel 1 exit 1

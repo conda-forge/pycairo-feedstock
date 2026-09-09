@@ -13,7 +13,7 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
   ignore_run_exports:
     - libglib
@@ -41,11 +41,15 @@ requirements:
     - python
 
 test:
+  files:
+    - test_pycairo.py
   imports:
     - cairo
   requires:
     - pkg-config
   commands:
+    - python test_pycairo.py AA64  # [target_platform == "win-arm64"]
+    - python test_pycairo.py 8664  # [win64]
     # verify the pkgconfig files get installed
     - test -f $PREFIX/lib/pkgconfig/py3cairo.pc  # [unix]
     - if not exist %LIBRARY_LIB%\\pkgconfig\\py3cairo.pc exit 1  # [win]
