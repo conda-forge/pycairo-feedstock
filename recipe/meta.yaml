@@ -13,7 +13,7 @@ source:
     - typing-test-workaround.patch
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   ignore_run_exports:
     - libglib
@@ -23,7 +23,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - meson >=0.62
-    - pkg-config
+    - pkgconf
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
   host:
@@ -44,7 +44,7 @@ test:
   imports:
     - cairo
   requires:
-    - pkg-config
+    - pkgconf
   commands:
     # verify the pkgconfig files get installed
     - test -f $PREFIX/lib/pkgconfig/py3cairo.pc  # [unix]
